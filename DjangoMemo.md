@@ -31,6 +31,32 @@ python manage.py startapp $(applicationname)
 
  modelを書く。modelは、django.db.Models.modelクラスを継承する
 
+## urls.py
+
+ コントローラになる。
+ urlpatternsにurlを突っ込む。
+
+ url(正規表現, 読み込むview, name=)
+
+### pythonの正規表現
+
+ rプレフィクス付きの文字列
+ 
+```
+  r'^$'
+```
+
+ 名前付きのパターン。
+```
+  r'?P<name>pattern'
+```
+
+ 名前付きパターンはviewで受け取れる
+
+```
+  def viewfunc(request, name):
+```
+
 ### modelの持つfield
 
  これらはDBに保存されるためちょっと独自な方を持つ。リファレンス見ろ
@@ -73,7 +99,19 @@ $applicationname/admin.pyを編集
 ```
 admin.site.register($modelname)
 ```
-する
+する。ちゃんとmodelをimportしておくこと
 
+
+## template
+
+ $applicationdirectory/templates
+
+ を作る
+
+ この中にテンプレートを書く。
+
+ django.template.loader.get\_templateに、templatesより下の.htmlの名前を書く
+
+ 作ったtemplateからrenderを読んでHttpResponseに渡す。第二引数に辞書を渡すとテンプレ内で使える変数になる
 
 
