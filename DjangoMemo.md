@@ -25,7 +25,45 @@ python manage.py startapp $(applicationname)
 
 ## views.py
 
- viewを管理する。多分ページ単位で、ページ名の関数を作る。そいつはHttpResponseオブジェクトを返す
+ viewを管理する。多分ページ単位で、ページ名の関数を作る。そいつはHttpResponseオブジェクトかrenderの戻り値を返す
+ 他にもいろいろ返せる。HttpResponseRedirectとか。
+
+### generic views
+
+ ある程度のテンプレートとして、generic.viewというものが用意されている。例えば、
+ 
+- generic.ListView
+- generic.DetailView
+
+ こいつらを継承したクラスを作ってやってごにょごにょすると、決まりきった形のページなら楽に作れる
+ 
+ やっぱりいくつルールがある。
+
+- urlsでいままでviews.<funcname>としていたところをviews.<ClassName>.as_view()としなくちゃいけない
+- デフォルトではpkという名前のついた正規表現を受け取る
+- デフォルトでは<modelname>_detail.htmlや<modelname>_list.htmlというテンプレートを読む。変えたければ、template_nameという変数に名前を代入する。
+
+### reverse関数
+
+ 正規表現からurlを逆引きしてくる関数。大体はtemplateの中のurlと一緒。たとえば
+
+```
+reverse('polls:results', args=(3,))
+```
+
+　とすると、polls/3/resultsが帰ってくる
+
+### get_object_or_404
+
+　DBからオブジェクトをSELECTする。
+
+```
+obj = get_object_or_404(Question, pk=1)
+```
+
+ pkはprimary keyの略。Questionはモデルのクラス名（文字列ではなくてそのままクラスを突っ込む
+
+
 
 ## models.py
 
