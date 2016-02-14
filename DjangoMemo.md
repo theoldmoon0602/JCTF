@@ -67,7 +67,7 @@ obj = get_object_or_404(Question, pk=1)
 
 ## models.py
 
- modelを書く。modelは、django.db.Models.modelクラスを継承する
+ modelを書く。modelは、django.db.models.Modelクラスを継承する
 
 ## urls.py
 
@@ -111,6 +111,8 @@ obj = get_object_or_404(Question, pk=1)
 
  modelを作ったらそれをprojectに伝える必要がある。
  $projectname/settings.pyのINSTALLED\_APPSに'$applicationname.apps.($Applicationnames)Config'を追加する。
+
+ これというのは、$applicationnameのディレクトリにある、apps.pyというファイルの、${Applicationname}Configというクラスを指している。
 
  例えばpollsというアプリケーションなら、'polls.apps.PollsConfig'になる。
 
