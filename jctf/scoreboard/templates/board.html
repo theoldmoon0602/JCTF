@@ -5,6 +5,6 @@
 {% block content %}
     <h1>ScoreBoard</h1>
         {% for d in data %}
-            {{ d.name }}
+            <a href="{% url 'problem' d.id %}">{{ d.name }}</a>
         {% endfor %}
 {% endblock %}
