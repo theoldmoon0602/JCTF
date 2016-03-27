@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Problem
 
 def index(request):
-    return HttpResponse("Hello world")
+    #return HttpResponse("Hello world")
     try:
       ps = Problem.objects.all()
     except e:

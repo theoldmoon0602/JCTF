@@ -6,6 +6,10 @@
     </head>
     <body>
         <h1>ScoreBoard</h1>
-        {{ data }}
+        {% for d in data %}
+            {{ d.name }}
+        {% endfor %}
+
+
     </body>
 </html>

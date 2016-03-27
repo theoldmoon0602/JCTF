@@ -24,8 +24,8 @@ class Hint(models.Model):
 class Problem(models.Model):
     """ Problems. Containing problem text and ... """
     name = models.CharField(max_length=256, unique=True)
-    flag = models.CharField(max_length=256, unique=True)
-    text = models.TextField(blank=True)
+    flag = models.CharField(max_length=256, unique=True, default='')
+    text = models.TextField(blank=True,)
     url = models.TextField(validators=[URLValidator()], blank=True)
     solvedby = models.ManyToManyField(User, blank=True)
     hint = models.ManyToManyField(Hint, blank=True)
