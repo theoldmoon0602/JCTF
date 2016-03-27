@@ -1,14 +1,13 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title></title>
-    </head>
-    <body>
-        <h1>ScoreBoard</h1>
+{% extends 'base.html' %}
+
+{% block title %}scoreboard{% endblock %}
+
+{% block content %}
+    <h1>ScoreBoard</h1>
         {% for d in data %}
             {{ d.name }}
         {% endfor %}
+{% endblock %}
 
 
     </body>
